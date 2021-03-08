@@ -97,6 +97,24 @@ export const addCashBalance = (balance) => async (dispatch) => {
   }
 };
 
+export const giveRating = ({ restaurantId, rating }) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const body = JSON.stringify({ restaurantId, rating });
+    const res = await axios.post(
+      "/api/restaurant-profile/give-rating",
+      body,
+      config
+    );
+    alert(res.data.msg);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 export const buyFood = ({ couponId, billAmount }) => async (dispatch) => {
   try {
     const config = {

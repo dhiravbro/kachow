@@ -191,4 +191,28 @@ router.post("/buy-coupon", auth, async (req, res) => {
   }
 });
 
+router.post("/give-rating", auth, async (req, res) => {
+  try {
+    const { restaurantId, rating } = req.body;
+    const restaurantProfile = await restaurantProfileModel.findOne({
+      restaurant: restaurantId,
+    });
+    if (!restaurantProfile) {
+      return res.status(400).json({ msg: "Restaurant profile doesn't exist" });
+    }
+    restaurantProfile.avgRating =
+      (restaurantProfile.avgRating * restaurantProfile.customersRated +
+        rating) /
+      (restaurantProfile.customersRated + 1);
+    restaurantProfile.customersRated += 1;
+    restaurantProfile.save();
+    return res.status(200).json({ msg: "Thank You for rating us!" });
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind == "ObjectId") {
+      return res.status(400).json({ msg: " Restaurant Profile doesn't exist" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
 module.exports = router;

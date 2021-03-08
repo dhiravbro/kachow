@@ -17,7 +17,7 @@ const LandingPage = (props) => {
         <h1 className="welcome-heading text-center">Welcome to Kachow !</h1>
         <div className="py-5">
           <Link to="/restaurant" className="mr-3">
-            <Button variant="primary">We are a restaurant business.</Button>
+            <Button variant="primary">We are a restaurant </Button>
           </Link>
           <Link to="/consumer">
             <Button variant="light">

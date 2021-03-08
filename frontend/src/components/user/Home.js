@@ -12,7 +12,9 @@ const Home = (props) => {
       {props.userProfile === null && !props.loading ? (
         <p>Loading</p>
       ) : (
-        <p>Here is your cash balance.{props.userProfile.addedCash} </p>
+        <p className="my-5">
+          Here is your cash balance : {props.userProfile.addedCash}{" "}
+        </p>
       )}
       <div className="form-group">
         <label for="exampleInputEmail1">Amount </label>

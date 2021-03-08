@@ -25,6 +25,14 @@ const restaurantProfileSchema = new mongoose.Schema({
       },
     },
   },
+  avgRating: {
+    type: Number,
+    default: 0,
+  },
+  customersRated: {
+    type: Number,
+    default: 0,
+  },
   coupons: {
     type: [
       {

@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
     console.log("There was some error in connection");
   }
 });
-
-app.listen(5000, function (req, res) {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, function (req, res) {
   console.log("server started on port 5000");
 });

@@ -9,7 +9,7 @@ export const Explore = (props) => {
   }, []);
   return (
     <div>
-      Here is the restaurant list
+      <p className="my-5">Here is the restaurant list : </p>
       {props.restaurantList &&
         props.restaurantList.map((restaurantProfile) => {
           const details = restaurantProfile.restaurant;
@@ -17,6 +17,8 @@ export const Explore = (props) => {
             <RestaurantCardComponent
               restaurantId={details._id}
               restaurantProfileImage={restaurantProfile.profileImage}
+              restaurantRating={restaurantProfile.avgRating}
+              restaurantCustomersRated={restaurantProfile.customersRated}
               address={restaurantProfile.address}
               restaurantName={details.name}
               coupons={restaurantProfile.coupons}
